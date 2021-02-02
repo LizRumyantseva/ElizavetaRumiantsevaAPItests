@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="YandexSpellerTests">
+    <test name="TextsTest">
+        <classes>
+            <class name="hw2.tests.CheckTextsTest"/>
+            <class name="hw2.tests.CheckTextTest"/>
+        </classes>
+    </test>
+</suite>
