@@ -17,14 +17,16 @@ public class AssertionSteps {
         this.response = response;
     }
 
-    public void makeDtoList(){
+    public AssertionSteps makeDtoList(){
         yandexSpellerDtoList = new ResponseJsonParser()           // for checkTexts - sentence
                 .getResponseForSentenceFromJson(response);
+        return this;
     }
 
-    public void makeDto(){
+    public AssertionSteps makeDto(){
         yandexSpellerDto = new ResponseJsonParser()               // for checkText - word
                 .getResponseForWordFromJson(response);
+        return this;
     }
 
     public void verifyCorrectWord(String expectedWord) {

@@ -12,19 +12,13 @@ import java.util.Properties;
 public class CommonService {
     public RequestSpecification REQUEST_SPECIFICATION;
 
-    @SneakyThrows
-    private Properties getProperties() {
-        Properties props = new Properties();
-        String propFileName = "test.properties";
-        props.load(getClass().getClassLoader().getResourceAsStream(propFileName));
-        return props;
-    }
+    private ProjectProperties props = new ProjectProperties();
 
     public CommonService() {
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
         REQUEST_SPECIFICATION = new RequestSpecBuilder()
                 .setAccept(ContentType.JSON)
-                .setBaseUri(getProperties().get("service").toString())  //base uri
+                .setBaseUri(props.getProperties().get("service").toString())  //base uri
                 .addFilter(new RequestLoggingFilter())
                 .addFilter(new ResponseLoggingFilter())
                 .build();

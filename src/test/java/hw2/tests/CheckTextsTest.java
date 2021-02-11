@@ -30,17 +30,17 @@ public class CheckTextsTest {
     void sentenceCheck(YaSpellerLanguages language, YaSpellerOptions option, String sentence, List<String> expectedWords) {
         YANDEX_RESPONSE = ActionSteps.getCheck(URIEndPoints.CHECK_TEXTS, language, option, sentence);
 
-        AssertionSteps assertionSteps = new AssertionSteps(YANDEX_RESPONSE);
-        assertionSteps.makeDtoList();
-        assertionSteps.verifyCorrectSentence(expectedWords);
+        new AssertionSteps(YANDEX_RESPONSE)
+                .makeDtoList()
+                .verifyCorrectSentence(expectedWords);
     }
 
     @Test(dataProviderClass = DataProviderForGetTexts.class, dataProvider = "sentenceForErrorCodeDataProvider")
     public void errorCodeCheck(YaSpellerLanguages language, YaSpellerOptions option, String sentence, YaSpellerErrorCodes error) {
         YANDEX_RESPONSE = ActionSteps.getCheck(URIEndPoints.CHECK_TEXTS, language, option, sentence);
 
-        AssertionSteps assertionSteps = new AssertionSteps(YANDEX_RESPONSE);
-        assertionSteps.makeDtoList();
-        assertionSteps.verifyErrorCodesForSentence(error);
+        new AssertionSteps(YANDEX_RESPONSE)
+                .makeDtoList()
+                .verifyErrorCodesForSentence(error);
     }
 }

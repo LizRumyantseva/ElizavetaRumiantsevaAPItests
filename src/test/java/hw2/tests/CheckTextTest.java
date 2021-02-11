@@ -26,9 +26,9 @@ public class CheckTextTest {
     public void oneWordCheck(YaSpellerLanguages language, YaSpellerOptions option, String wordToCheck, String expectedWord) {
         YANDEX_RESPONSE = ActionSteps.getCheck(URIEndPoints.CHECK_TEXT, language, option, wordToCheck);
 
-        AssertionSteps assertionSteps = new AssertionSteps(YANDEX_RESPONSE);
-        assertionSteps.makeDto();
-        assertionSteps.verifyCorrectWord(expectedWord);
+        new AssertionSteps(YANDEX_RESPONSE)
+                .makeDto()
+                .verifyCorrectWord(expectedWord);
     }
 
 }
